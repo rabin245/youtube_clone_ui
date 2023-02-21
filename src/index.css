@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --scrollbar-track-color: #181818;
+  /* dark */
+  --scrollbar-thumb-color: #ababaa;
+  /* --scrollbar-thumb-color: #606060; */
+}
+
 /* remove the default scrollbar from the sidebar class*/
 .menu::-webkit-scrollbar {
   width: 0.5rem;
@@ -12,10 +19,15 @@
 }
 
 .sidebar:hover .menu::-webkit-scrollbar-thumb {
-  background: #7b7a7a;
+  /* background: #7b7a7a; */
+  background: var(--scrollbar-thumb-color);
   border-radius: 25px;
 }
 
+body {
+  /* to apply bg color to the track of the scrollbar */
+  background-color: var(--scrollbar-track-color);
+}
 body::-webkit-scrollbar {
   width: 0.6rem;
 }
@@ -24,6 +36,9 @@ body::-webkit-scrollbar-track {
   border-radius: 25px;
 }
 body::-webkit-scrollbar-thumb {
-  background: #7b7a7a;
+  background: var(--scrollbar-thumb-color);
   border-radius: 25px;
+}
+body::-webkit-scrollbar-thumb:hover {
+  background-color: ;
 }

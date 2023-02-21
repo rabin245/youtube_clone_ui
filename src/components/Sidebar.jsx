@@ -1,12 +1,49 @@
 import Logo from "../assets/logo.png";
 import MenuItem from "./MenuItem";
 import { menuItems, menuIcon, accountIcon, darkModeIcon } from "./Icons";
+import { useEffect, useState } from "react";
 
 const Hr = () => (
   <hr className="my-3 border-0 h-px bg-lightHover dark:bg-darkHover" />
 );
 
 function Sidebar() {
+  const [darkMode, setDarkMode] = useState(true);
+
+  const switchTheme = () => {
+    // document.documentElement.classList.toggle("dark");
+    const root = document.documentElement;
+
+    root.classList.toggle("dark");
+    setDarkMode((prev) => {
+      localStorage.theme = prev ? "light" : "dark";
+      return !prev;
+    });
+  };
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const lightBackground = "#f9f9f9";
+    const lightThumb = "#606060";
+    const darkBackground = "#181818";
+    const darkThumb = "#ababaa";
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      root.classList.add("dark");
+      localStorage.theme = "dark";
+      root.style.setProperty("--scrollbar-track-color", darkBackground);
+      root.style.setProperty("--scrollbar-thumb-color", darkThumb);
+    } else {
+      root.classList.remove("dark");
+      localStorage.theme = "light";
+      root.style.setProperty("--scrollbar-track-color", lightBackground);
+      root.style.setProperty("--scrollbar-thumb-color", lightThumb);
+    }
+  }, [darkMode]);
+
   return (
     <div
       className="sidebar bg-lightSecondaryBackground dark:bg-darkSecondaryBackground w-64 h-screen 
@@ -31,12 +68,7 @@ function Sidebar() {
             <Hr />
             <MenuItem title={menuItems[3].title} icon={menuItems[3].icon} />
             <MenuItem title={menuItems[4].title} icon={menuItems[4].icon} />
-            <div
-              onClick={() => {
-                document.documentElement.classList.toggle("dark");
-                // console.log(document.documentElement.classList.toggle("dark"));
-              }}
-            >
+            <div className="darkMode" onClick={switchTheme}>
               <MenuItem title={"Switch Themes"} icon={darkModeIcon} />
             </div>
 
