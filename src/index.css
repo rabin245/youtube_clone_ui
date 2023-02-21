@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* remove the default scrollbar from the sidebar class*/
+.menu::-webkit-scrollbar {
+  width: 0.5rem;
+}
+.sidebar:hover .menu::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 25px;
+}
+
+.sidebar:hover .menu::-webkit-scrollbar-thumb {
+  background: #7b7a7a;
+  border-radius: 25px;
+}
+
+body::-webkit-scrollbar {
+  width: 0.6rem;
+}
+body::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 25px;
+}
+body::-webkit-scrollbar-thumb {
+  background: #7b7a7a;
+  border-radius: 25px;
+}

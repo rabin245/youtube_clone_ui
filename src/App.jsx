@@ -1,7 +1,34 @@
+import { Outlet } from "react-router-dom";
+import Sidebar from "./components/Sidebar";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./pages/Home";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+    ],
+  },
+]);
+
+function Layout() {
+  return (
+    <>
+      <Sidebar />
+      <Outlet />
+    </>
+  );
+}
+
 function App() {
   return (
     <div className="App">
-      <h1 className="text-xl font-bold underline">Hello world!</h1>
+      <RouterProvider router={router} />
     </div>
   );
 }
