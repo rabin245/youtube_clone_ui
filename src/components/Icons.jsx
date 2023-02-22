@@ -14,6 +14,7 @@ import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import FeedbackOutlinedIcon from "@mui/icons-material/FeedbackOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
+import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 
 const icons = {
   menu: <MenuRoundedIcon />,
@@ -32,6 +33,7 @@ const icons = {
   feedback: <FeedbackOutlinedIcon />,
   account: <AccountCircleOutlinedIcon />,
   darkMode: <DarkModeOutlinedIcon />,
+  search: <SearchRoundedIcon />,
 };
 export const menuItems = [
   {
@@ -82,3 +84,4 @@ export const menuItems = [
 export const menuIcon = icons.menu;
 export const accountIcon = icons.account;
 export const darkModeIcon = icons.darkMode;
+export const searchIcon = icons.search;

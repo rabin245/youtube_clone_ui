@@ -1,48 +1,16 @@
 import Logo from "../assets/logo.png";
 import MenuItem from "./MenuItem";
-import { menuItems, menuIcon, accountIcon, darkModeIcon } from "./Icons";
-import { useEffect, useState } from "react";
+import { menuItems, menuIcon, darkModeIcon } from "./Icons";
+import { useContext } from "react";
+import SigninButton from "./SigninButton";
+import { ThemeContext } from "../context/ThemeContext";
 
 const Hr = () => (
   <hr className="my-3 border-0 h-px bg-lightHover dark:bg-darkHover" />
 );
 
 function Sidebar() {
-  const [darkMode, setDarkMode] = useState(true);
-
-  const switchTheme = () => {
-    // document.documentElement.classList.toggle("dark");
-    const root = document.documentElement;
-
-    root.classList.toggle("dark");
-    setDarkMode((prev) => {
-      localStorage.theme = prev ? "light" : "dark";
-      return !prev;
-    });
-  };
-
-  useEffect(() => {
-    const root = document.documentElement;
-    const lightBackground = "#f9f9f9";
-    const lightThumb = "#606060";
-    const darkBackground = "#181818";
-    const darkThumb = "#ababaa";
-    if (
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      root.classList.add("dark");
-      localStorage.theme = "dark";
-      root.style.setProperty("--scrollbar-track-color", darkBackground);
-      root.style.setProperty("--scrollbar-thumb-color", darkThumb);
-    } else {
-      root.classList.remove("dark");
-      localStorage.theme = "light";
-      root.style.setProperty("--scrollbar-track-color", lightBackground);
-      root.style.setProperty("--scrollbar-thumb-color", lightThumb);
-    }
-  }, [darkMode]);
+  const { darkMode, switchTheme } = useContext(ThemeContext);
 
   return (
     <div
@@ -75,16 +43,10 @@ function Sidebar() {
             <Hr />
             {/* sign in button section */}
             <div className="signin px-4 text-sm">
-              <span>Sign in to like videos, comment, and subscribe.</span>
-              <div
-                className="button flex items-center gap-2 mt-2 py-2 px-3 w-max
-                            border border-lightHover dark:border-darkHover rounded-full text-blue-500
-                            cursor-pointer hover:bg-blue-400 hover:bg-opacity-20 font-bold text-sm
-                            "
-              >
-                {accountIcon}
-                <span>Sign in</span>
-              </div>
+              <span className="mb-2 inline-block">
+                Sign in to like videos, comment, and subscribe.
+              </span>
+              <SigninButton />
             </div>
             <Hr />
             <MenuItem title={menuItems[5].title} icon={menuItems[5].icon} />
