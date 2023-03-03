@@ -2,6 +2,8 @@ import { Outlet } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
+import Videos from "./pages/Videos";
+import Video from "./pages/Video";
 
 const router = createBrowserRouter([
   {
@@ -11,7 +13,19 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+        children: [
+          {
+            path: "/",
+            element: <Videos />,
+          },
+
+          {
+            path: "/video",
+            element: <Video />,
+          },
+        ],
       },
+      ,
     ],
   },
 ]);

@@ -1,5 +1,5 @@
+import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import VideoCard from "../components/VideoCard";
 
 function Home() {
   return (
@@ -9,26 +9,7 @@ function Home() {
         <Navbar />
 
         {/* content */}
-        <div className="cards mt-4 grid gap-x-4 gap-y-8 lg:grid-cols-4 grid-cols-2">
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-        </div>
+        <Outlet />
       </div>
     </div>
   );

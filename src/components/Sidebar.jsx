@@ -4,6 +4,7 @@ import { menuItems, menuIcon, darkModeIcon } from "./Icons";
 import { useContext } from "react";
 import SigninButton from "./SigninButton";
 import { ThemeContext } from "../context/ThemeContext";
+import { Link } from "react-router-dom";
 
 const Hr = () => (
   <hr className="my-3 border-0 h-px bg-lightHover dark:bg-darkHover" />
@@ -24,8 +25,12 @@ function Sidebar() {
                     px-4 p-2"
         >
           {menuIcon}
-          <img src={Logo} className="w-7 ml-5 mr-1" alt="logo" />
-          <span className="text-xl font-bold -tracking-widest">YouTube</span>
+          <Link to="/">
+            <img src={Logo} className="w-7 ml-5 mr-1" alt="logo" />
+          </Link>
+          <Link to="/">
+            <span className="text-xl font-bold -tracking-widest">YouTube</span>
+          </Link>
         </div>
 
         <div className="menu-wrapper h-full">
